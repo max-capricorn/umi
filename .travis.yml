@@ -1,2 +1,18 @@
-language: node_js,
+language: node_js
+node_js:
+- "12"
+cache:
+  directory:
+  - node_modules
+install:
+- npm install
+script:
+- hexo generate
+branches:
+ only:
+ - master
+after_script:
+- scp -o stricthostkeychecking=no -r ./dist/* root@39.102.67.205:/usr/share/nginx/h5
+
+
 
